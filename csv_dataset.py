@@ -1,13 +1,16 @@
 import csv
+
+import pandas
 from PIL import Image
+import numpy
 from numpy import asarray
 
-def __init__():
-    image = Image.open("untitled.png")
+def save_dataset():
+    image = Image.open("Untitled.png")
     image_sequence = asarray(image)
-    print(image_sequence)
 
-    writer = csv.writer(open('protagonist.csv', 'w', newline=''))
+    writer = csv.writer(open('dataset.csv', 'w', newline=''))
     writer.writerows(image_sequence)
 
-__init__()
+    data = numpy.genfromtxt('dataset.csv', dtype=int, delimiter=',')
+    return data
