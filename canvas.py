@@ -1,11 +1,12 @@
 from tkinter import *
 
+import PIL.ImageOps
 import mss as mss
 import pyautogui
 import numpy
 import random
 import tkcap
-import pylab as pl
+#import pylab as pl
 import PIL
 import win32api
 import pyautogui as pyag
@@ -49,6 +50,11 @@ def __init__():
         cap = tkcap.CAP(canvas)
         img_name = "img_" + app_title + ' ' + str(random.random()) + ".png"
         image = cap.capture(img_name)
+
+        image = open(img_name)
+        box = (190, 190, 190, 190)
+        cropped_image = PIL.ImageOps.crop(image,border=0)
+        cropped_image.save('cropped_image.jpg')
 
     canvas = Tk()
     canvas.title(app_title)
